@@ -1,0 +1,70 @@
+package com.sendotp.helper;
+
+import java.util.Properties;
+
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+public class Helper {
+	public static void sendOtp(int otp, String email) { 
+	
+
+	
+		String from = "varaprasad0855@gmail.com";
+
+
+		String host = "smtp.gmail.com";
+
+		
+		Properties properties = System.getProperties();
+
+		
+		properties.put("mail.smtp.host", host);
+		properties.put("mail.smtp.port", "465");
+		properties.put("mail.smtp.ssl.enable", "true");
+		properties.put("mail.smtp.auth", "true");
+
+		
+		Session session = Session.getInstance(properties, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+
+				return new PasswordAuthentication("varaprasad0855@gmail.com", "bhqabiieeampgfp");
+			}
+		});
+
+		
+		session.setDebug(true);
+
+		try {
+	
+			MimeMessage message = new MimeMessage(session);
+
+			InternetAddress ia = new InternetAddress(from);
+			InternetAddress ia1 = new InternetAddress(email);
+			
+			message.setFrom(ia);
+
+			message.addRecipient(Message.RecipientType.TO, ia1);
+
+			message.setSubject("VK Solutions");
+
+			message.setContent("<h1 style=color:green>" + otp + "  </h1>", "text/html");
+
+			
+			
+			Transport.send(message);
+			
+		} catch (MessagingException mex) {
+			mex.printStackTrace();
+		}
+
+	}
+}

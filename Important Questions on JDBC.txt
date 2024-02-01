@@ -1,0 +1,108 @@
+                              Important Questions on JDBC
+
+1. What is an API
+A:- API is a software mediator which allows two applications to communicate with each other.
+
+2. What is JDBC.
+A:- JDBC is an API which is used to connect java application with the database..
+
+3. Explain Class.forName() ?
+A:- Class.forName() loads driver into the memory and it registers the driver.
+
+4. who is a database vendor?
+A:- A database vendor is a person or group or entity or company which offers database to its users on license.
+
+5. what is db driver software?
+A:- A db driver is a software which help jdbc to connect java application with the database. Db drivers are provided by database vendors
+
+6. Explain Steps in JDBC ?
+A:- a. Load And Register the Driver
+    b. Establish the Connection.
+    c. CreateStatement.
+    d. ExecuteStatement.
+    e. Process the resultset.
+    f. close the connection.
+
+7. How to establish the connection in JDBC.?
+A:- we establish the connection in jdbc with the help of helper class called as DriverManager. To establish the connection, DriverManager class provides a static method called as getConnection(String url , String uname, String password) method. getConnection method returns the object of Connection interface
+
+8. what is Statement ?
+A:- Statement is an interface in JDBC, which is used to send our requirements to the database.
+
+9. what is executing the statement.?
+A:- The process of sending our requirements to the database and executing them is called as executing the statements. We execute the statement with the help of 3 methods. They are:-  
+       a. execute()
+       b. executeUpdate()
+       c. executeQuery()
+
+10. Difference between execute() ,executeUpdate() and executeQuery().?
+A:- execute() :- 
+            execute() method can perform DML,DDL,Dql commands. execute() method supports any type of query. the return type of execute() is boolean. it return true when we pass select query , in remaining cases it returns false. 
+
+note:- execute() methods supports select query but it does not return the data as its return type is boolean.
+
+executeUpdate() :-
+            executeUpdate() majorly used to perform DML commands. the return type of executeUpdate() is int. executeUpdate() method returns the no. of rows that got affected with our query. 
+
+
+executeQuery() :- 
+           executeQuery() is used only to fetch data from database. the return type of executeQuery() is ResultSet. executeQuery() fetches the data and stores the data in ResultSet Object and then it returns resultset type of object back to the user.
+
+11. what is ResultSet?
+A:- A ResultSet is an interface which acts as a container to store the results in JDBC.
+    In ResultSet, by default the cursor will be above the data.
+
+12. Name some methods of ResultSet.?
+A:- next() :- next() is used to move the cursor to the next row from current position.
+    getInt(int columnindex), getString(int columnindex),
+    getLong(int columnindex),getDouble(int columnindex),
+    getBoolean(int columnindex) 
+    etc. These methods are used to fetch the data from ResultSet
+
+13. what is processing the ResultSet.?
+A:- The process of fetching the data From ResultSet is called Processing the resultSet.
+
+14. what is PreparedStatement.?
+A:- PreparedStatement is a sub interface of Statement interface. We use PreparedStatement to perform Operations with the database by reading dynamic input from the user. We majorly use PreparedStatement whenever we want to execute same query multiple times.
+
+15. what is placeholder or delimitors in JDBC.?
+A:- The placeholder is the question mark and is replaced with a value at run time. A placeholder is used to read the values during the runtime in a query
+
+16. Difference between statement and prepared statement ?
+A:- Statement :-
+	1- Whenever we create statement,programmer no need to pass any query.
+	2- We use statement when we need to execute different queries at the same type.
+	3- Statement is never associated with one particular query.
+	4- Statement is slower and not efficient as prepared statement.
+	5- In statement each query is compiled and then executed.
+   PreparedStatement :-
+	1- When we create preparedstatement ,programmer definitely has to pass a query.
+	2- We use pareparedstatement, when we need to execute same query multiple times.
+	3- In PreparedStatement ,the associated with one particular query.
+	4- Prepared statement is always associated with one particular query.
+	5- PreparedStatement is faster and efficient when compared to statement.
+
+17. what is batch processing?
+A:-  Betch processing is the process of sending multiple queries as one request and after execute submitting them as one response
+back to the user is called as batch processing.
+	
+  or--
+	
+	1- A batch is a container which is used to store multiple queries.
+	2- Batch processing is majorly used when to execute huge of queries at the same time.
+
+18. what are the advantages or disadvantages of batch processing?
+A:-
+Advantage :- 
+	1- Batch processing avoids network traffic in database.
+	2- Batch processing improve efficiency of application.
+Disadvantage :-
+	1- We cannot add select query inside a batch.
+	2- Batch processing doed not supports DQL commands because batch processing internally use executeUpdate()
+	   method to execute the queries.
+
+
+
+
+
+    
